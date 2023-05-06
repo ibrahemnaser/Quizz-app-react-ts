@@ -1,11 +1,4 @@
-type QuestionCardPropsType = {
-  question: string;
-  answers: string[];
-  userAnswer: any;
-  questionNum: number;
-  totalQuestions: number;
-  callback: any;
-};
+import { QuestionCardPropsType } from "../../types/questions-answers";
 
 const QuestionCard: React.FC<QuestionCardPropsType> = ({
   question,
@@ -23,7 +16,7 @@ const QuestionCard: React.FC<QuestionCardPropsType> = ({
       <p dangerouslySetInnerHTML={{ __html: question }} />
       {answers.map((answer, indx) => (
         <div key={indx}>
-          <button disabled={userAnswer} onClick={callback}>
+          <button disabled={!!userAnswer} value={answer} onClick={callback}>
             <span dangerouslySetInnerHTML={{ __html: answer }} />
           </button>
         </div>
